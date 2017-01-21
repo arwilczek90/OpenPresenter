@@ -11,7 +11,7 @@ function setup() {
   const component = shallow(<Home />);
   return {
     component,
-    h1: component.find('.testHeader'),
+    h1: component.find('.headerText'),
   };
 }
 
