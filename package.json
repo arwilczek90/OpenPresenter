@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/arwilczek90/OpenPresenter/issues"
   },
-  "homepage": "https://github.com/arwilczek90/OpenPresenter#readme"
+  "homepage": "https://github.com/arwilczek90/OpenPresenter#readme",
+  "dependencies": {
+    "electron": "^1.4.15",
+    "electron-packager": "^8.5.0"
+  }
 }
