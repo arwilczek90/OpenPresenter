@@ -2,17 +2,15 @@ import { Application } from 'spectron';
 import { expect } from 'chai';
 import electronPath from 'electron';
 import path from 'path';
-import homeStyles from '../app/components/Home.css';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
 
-
 describe('main window', function spec() {
   this.timeout(10000);
-  const findHeader = () => this.app.client.element(`.headerText`);
+  const findHeader = () => this.app.client.element('.headerText');
 
-  before(async() => {
+  before(async () => {
     this.app = new Application({
       path: electronPath,
       args: [path.join(__dirname, '..', 'app')],
@@ -26,8 +24,8 @@ describe('main window', function spec() {
     }
   });
 
-  it('should open window', async() => {
-    const {client, browserWindow} = this.app;
+  it('should open window', async () => {
+    const { client, browserWindow } = this.app;
 
     await client.waitUntilWindowLoaded();
     await delay(500);
@@ -36,15 +34,12 @@ describe('main window', function spec() {
   });
 
   it('should have an h1 with the text test', async () => {
-    const {client, browserWindow} = this.app;
+    const { client } = this.app;
     await client.waitUntilWindowLoaded();
     await delay(500);
     await client.waitForText('.headerText');
     await delay(500);
 
-    const header = await findHeader();
-    expect(await findHeader().getText()).to.match(/^Test/)
-
-
+    expect(await findHeader().getText()).to.match(/^Test/);
   });
 });
