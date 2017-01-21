@@ -1,0 +1,22 @@
+{
+  "name": "open-presenter",
+  "version": "0.0.1",
+  "description": "An opensource presenting app used for creating presentations using music, video, text and images.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arwilczek90/OpenPresenter.git"
+  },
+  "keywords": [
+    "presenter"
+  ],
+  "author": "Adam R. Wilczek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arwilczek90/OpenPresenter/issues"
+  },
+  "homepage": "https://github.com/arwilczek90/OpenPresenter#readme"
+}
