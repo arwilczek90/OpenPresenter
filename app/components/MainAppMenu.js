@@ -18,12 +18,12 @@ class MainAppMenu extends React.Component {
     return (
       <IconMenu
         {...this.props}
-        iconButtonElement={<IconButton><MoreVertIcon color={white} /></IconButton>}
+        iconButtonElement={<IconButton data-qa="MainAppMenu::menuButton"><MoreVertIcon color={white} /></IconButton>}
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
-        <MenuItem primaryText="Projects" onTouchTap={this.navigateToProjects.bind(this)} />
-        <MenuItem primaryText="Settings" />
+        <MenuItem primaryText="Projects" onTouchTap={this.navigateToProjects.bind(this)} data-qa="MainAppMenu::projectsButton" />
+        <MenuItem primaryText="Settings" data-qa="MainAppMenu::settingsButton" />
 
       </IconMenu>
     );
