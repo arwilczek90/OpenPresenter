@@ -1,4 +1,7 @@
+
 # OpenPresenter
+[![Stories in Ready](https://badge.waffle.io/arwilczek90/OpenPresenter.png?label=ready&title=Ready)](https://waffle.io/arwilczek90/OpenPresenter)
+[![Build Status](https://travis-ci.org/arwilczek90/OpenPresenter.svg?branch=master)](https://travis-ci.org/arwilczek90/OpenPresenter)
 An opensource presenter software that plays audio and video, displays images, text and more.
 *WE ARE STILL IN DEVELOPMENT*
 
