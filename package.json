@@ -2,7 +2,7 @@
   "name": "open-presenter",
   "productName": "OpenPresenter",
   "version": "0.0.1",
-  "description": "",
+  "description": "An opensource presenter program built on nodejs and electron",
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --retries 2 --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
@@ -29,8 +29,8 @@
   },
   "browserslist": "chrome 50",
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.develar.ElectronReact",
+    "productName": "OpenPresenter",
+    "appId": "org.arwilczek90.OpenPresenter",
     "category": "public.app-category.tools",
     "dmg": {
       "contents": [
