@@ -14,10 +14,10 @@ class ProjectSelector extends React.Component {
     const projectOpen = this.props.projectOpen || false;
     return (
       <div>
-        <RaisedButton label="New" />
-        <RaisedButton label="Open" />
+        <RaisedButton label="New" data-qa="ProjectSelectorButtons::NewProject" />
+        <RaisedButton label="Open" data-qa="ProjectSelectorButtons::OpenProject" />
 
-        {projectOpen ? <RaisedButton label="Return To Project" onTouchTap={this.returnHome.bind(this)} /> : null}
+        {projectOpen ? <RaisedButton label="Return To Project" onTouchTap={this.returnHome.bind(this)} data-qa="ProjectSelectorButtons::ReturnHome" /> : null}
       </div>
     );
   }

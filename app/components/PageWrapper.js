@@ -10,7 +10,7 @@ class PageWrapper extends React.Component {
   render() {
     return (
       <div>
-        <AppBar className="AppBar" showMenuIconButton={false} title="OpenPresenter" iconElementRight={<MainAppMenu />} />
+        <AppBar showMenuIconButton={false} title="OpenPresenter" data-qa="PageWrapper::AppBar" iconElementRight={<MainAppMenu />} />
         <div>
           {this.props.children}
         </div>

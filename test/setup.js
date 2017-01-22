@@ -1,4 +1,5 @@
 import { jsdom } from 'jsdom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 global.document = jsdom('<!doctype html><html><body></body></html>');
 global.window = document.defaultView;
@@ -14,3 +15,5 @@ window.localStorage = window.sessionStorage = {
     this[key] = undefined;
   },
 };
+
+injectTapEventPlugin();
