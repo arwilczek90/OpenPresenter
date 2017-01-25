@@ -14,6 +14,10 @@ class MainAppMenu extends React.Component {
     this.context.router.push('/editor/projects');
   }
 
+  navigateToSettings() {
+    this.context.router.push('/editor/settings');
+  }
+
   render() {
     return (
       <IconMenu
@@ -23,7 +27,7 @@ class MainAppMenu extends React.Component {
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
         <MenuItem primaryText="Projects" onTouchTap={this.navigateToProjects.bind(this)} data-qa="MainAppMenu::projectsButton" />
-        <MenuItem primaryText="Settings" data-qa="MainAppMenu::settingsButton" />
+        <MenuItem primaryText="Settings" onTouchTap={this.navigateToSettings.bind(this)} data-qa="MainAppMenu::settingsButton" />
 
       </IconMenu>
     );
