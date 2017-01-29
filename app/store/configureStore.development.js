@@ -1,14 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga'
 import { hashHistory } from 'react-router';
 import { routerMiddleware, push } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
+import rootSaga from '../sagas';
 
-import * as settingsActions from '../actions/settings';
 
 const actionCreators = {
-  ...settingsActions,
   push,
 };
 
@@ -16,6 +15,8 @@ const logger = createLogger({
   level: 'info',
   collapsed: true
 });
+
+const sagaMiddleware = createSagaMiddleware();
 
 const router = routerMiddleware(hashHistory);
 
@@ -29,7 +30,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
   compose;
 /* eslint-enable no-underscore-dangle */
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk, router, logger)
+  applyMiddleware(sagaMiddleware, router, logger)
 );
 
 export default function configureStore(initialState) {
@@ -40,6 +41,6 @@ export default function configureStore(initialState) {
       store.replaceReducer(require('../reducers')) // eslint-disable-line global-require
     );
   }
-
+  sagaMiddleware.run(rootSaga);
   return store;
 }

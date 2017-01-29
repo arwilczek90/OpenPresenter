@@ -1,23 +1,34 @@
-import {SAVE_SETTINGS, GET_SETTINGS} from '../actions/settings';
 import {Map} from 'immutable'
 const initialState = Map();
 
 
 export default function settings(state = initialState, action) {
   switch (action.type) {
-    case SAVE_SETTINGS:
+    case 'SAVE_SETTINGS_SUCCESS':
         return state.merge({
-          projectDirectory: action.projectDirectory,
-          errorMessage: action.errorMessage,
-          saved: action.saved
+          saved: true
           }
         );
 
-    case GET_SETTINGS:
+    case 'SAVE_SETTINGS_ERROR':
       return state.merge({
-        projectDirectory: action.projectDirectory,
-        errorMessage: action.errorMessage,
+        errorMessage:action.payload.errorMessage,
+        saved: false
+      });
+    case 'GET_SETTINGS_COMPLETED':
+      return state.merge({
+        projectDirectory: action.payload.projectDirectory,
         saved: true
+      });
+    case 'GET_SETTINGS_ERROR':
+      return state.merge({
+        errorMessage: action.payload.errorMessage,
+        saved: true
+      });
+    case 'PROJECT_DIRECTOY_INPUT':
+      return state.merge({
+        projectDirectory: action.payload.input,
+        saved: false
       });
     default:
       return state;

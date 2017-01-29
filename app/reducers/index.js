@@ -1,9 +1,10 @@
-// @flow
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
+import settingsReducer from './settings';
 
 const rootReducer = combineReducers({
-  routing
+  routing,
+  settingsReducer
 });
 
 export default rootReducer;

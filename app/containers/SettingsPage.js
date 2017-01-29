@@ -1,24 +1,19 @@
 /**
  * Created by awilczek on 1/22/17.
  */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PageWrapper from '../components/PageWrapper';
 import SettingsBody from '../components/SettingsBody';
-import * as settingsActions from '../actions/settings'
 
 
 function mapStateToProps(state) {
   return {
-    projectDirectory: state.projectDirectory,
-    errorMessage: state.errorMessage,
-    saved: state.saved,
+    projectDirectory: state.settingsReducer.get('projectDirectory', ''),
+    errorMessage: state.settingsReducer.get('errorMessage', null),
+    saved: state.settingsReducer.get('saved',true),
   };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(settingsActions, dispatch);
 }
 
 class SettingsPage extends React.Component {
@@ -27,26 +22,33 @@ class SettingsPage extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getSettingsAsync();
+    this.props.dispatch({type: 'SETTINGS_GET_REQUESTED'});
   }
 
-  saveSettings(projectDirectory){
-    this.props.saveSettingsAsync(projectDirectory);
+  saveSettings(){
+    console.log(this.props.projectDirectory);
+    this.props.dispatch({type:'SETTINGS_SAVE_REQUESTED', payload:{projectDirectory:this.props.projectDirectory}});
   }
 
-  projectDirectoryChange(event){
-    this.setState({projectDirectory:event.target.value});
+  projectDirectoryChange(event, newValue){
+    this.props.dispatch({type: 'PROJECT_DIRECTORY_INPUT_SENT', payload: {input:newValue}});
   }
 
   render() {
     let projectDirectory = this.props.projectDirectory;
     return (
       <PageWrapper>
-        <SettingsBody handleChange={this.projectDirectoryChange.bind(this)} saveFunction={this.saveSettings.bind(this)} projectDirectory={projectDirectory} />
+        <SettingsBody projectDirHandler={this.projectDirectoryChange.bind(this)} saveFunction={this.saveSettings.bind(this)} projectDirectory={projectDirectory} />
       </PageWrapper>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);
+SettingsPage.propTypes = {
+  projectDirectory: PropTypes.string,
+  saved: PropTypes.bool,
+  errorMessage: PropTypes.string
+}
+
+export default connect(mapStateToProps)(SettingsPage);
 

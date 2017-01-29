@@ -8,20 +8,17 @@ import styles from './SettingsBody.css';
 
 
 export default class SettingsBody extends Component {
-  updateProjectDirectory(event){
-    this.setState({
-      projectDirectory: event.target.value
-    })
-  }
+
 
   render() {
     let projectDirectory = this.props.projectDirectory;
     let saveFunction = this.props.saveFunction;
+    let projectDirChangeHandler = this.props.projectDirHandler;
     return (
       <div>
         <Card>
-          <TextField hintText="Project Directory" id="projectDirTextBox" onChange={this.updateProjectDirectory.bind(this)} defaultValue={projectDirectory} />
-          <RaisedButton  label="Save" onTouchTap={() => {saveFunction(this.state.projectDirectory)}} />
+          <TextField hintText="Project Directory" id="projectDirTextBox" onChange={projectDirChangeHandler.bind(this)} value={projectDirectory} />
+          <RaisedButton  label="Save" onTouchTap={() => {saveFunction()}} />
         </Card>
       </div>
     );
