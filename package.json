@@ -146,7 +146,7 @@
     "html-webpack-plugin": "^2.26.0",
     "jsdom": "^9.9.1",
     "json-loader": "^0.5.4",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.2",
     "redux-logger": "^2.7.4",
